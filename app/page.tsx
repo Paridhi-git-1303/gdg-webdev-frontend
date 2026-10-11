@@ -227,7 +227,24 @@ function App() {
             <div className="team-copy"><h2>Meet the<br />Google Developer<br />Group Team<span className="period">.</span></h2><p className="team-description">Google Developers Groups(GDG) are open and volunteer-run communities for developers interested in Google technologies. Our team focuses on learning, networking, and collaboration through events and hands-on sessions.</p>
               <ul className="team-values"><li><span>✓</span><div><b>Passionate Community Leaders</b><small>Our organizers build an inclusive environment where developers can connect, share knowledge and grow together</small></div></li><li><span>✓</span><div><b>Emowering Developers</b><small>We host meetups and codelabs to help developers stay current with modern tools and best practices.</small></div></li><li></li></ul>
             </div>
-            <div className="team-photo-wrap"><img src="/assets/gdg-rbu-group.webp" alt="GDG RBU community group" className="team-photo" onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling.style.display = "flex"; }} /><div className="team-photo-fallback"><strong>Add your GDG RBU group photo</strong><small>Save it as public/assets/gdg-rbu-group.jpg</small></div><div className="photo-label"><span>GDG RBU</span><span>COMMUNITY / 2026</span></div><div className="photo-stamp">WE<br />BUILD<br />TOGETHER</div></div>
+            <div className="team-photo-wrap">
+  <img 
+    src="/assets/gdg-rbu-group.webp" 
+    alt="GDG RBU community group" 
+    className="team-photo" 
+    onError={(e) => { 
+      e.currentTarget.style.display = "none"; 
+      // The "?." fixes the TypeScript build error
+      if (e.currentTarget.nextElementSibling instanceof HTMLElement) {
+        e.currentTarget.nextElementSibling.style.display = "flex"; 
+      }
+    }} 
+  />
+  <div className="team-photo-fallback" style={{ display: "none" }}>
+    {/* Your fallback content/icon here */}
+  </div>
+</div>
+<div className="team-photo-fallback"><strong>Add your GDG RBU group photo</strong><small>Save it as public/assets/gdg-rbu-group.jpg</small></div><div className="photo-label"><span>GDG RBU</span><span>COMMUNITY / 2026</span></div><div className="photo-stamp">WE<br />BUILD<br />TOGETHER</div></div>
           </div>
         </section>
         <section className="faq-section wrap section-pad" id="faqs">
